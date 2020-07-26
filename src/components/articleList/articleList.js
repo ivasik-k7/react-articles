@@ -5,25 +5,32 @@ import NewsService from "../../services/news";
 
 const ArticleImg = styled.img`
     display: inline-block;
-    width: 200px;
-    height: 150px;
+    min-width: 275px;
+    height: 175px;
     object-fit: cover;
 `;
 
 const ArticleList = styled.ul`
-    list-style:none;
-    width:50%;
-    margin 30px auto;
-
+    list-style: none;
+    margin: 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 `;
 
 const ArticleListItem = styled.li`
+    flex-basis: 45%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
     margin-bottom: 25px;
+    min-height: 190px;
 `;
 const ArticleContentWrap = styled.div`
     margin-left: 10px;
     padding-right: 20px;
+    width: 100%;
 `;
 
 const ArticleSplit = styled.div`
@@ -40,7 +47,6 @@ const ArticleAuthor = styled.span`
 `;
 
 const ArticleTitle = styled.h4`
-    display: inline-block;
     padding: 4px;
     font-size: 18px;
     border-bottom: 2px solid rgba(188, 51, 16);
@@ -66,7 +72,7 @@ export default class articleList extends Component {
 
     render() {
         const {articles} = this.state;
-        console.log(articles);
+
         return (
             <div>
                 <ArticleList>
@@ -77,7 +83,7 @@ export default class articleList extends Component {
                                 <ArticleTitle>{article.title}</ArticleTitle>
                                 <ArticleDescr>{article.description}</ArticleDescr>
                                 <ArticleSplit>
-                                    <ArticleAuthor>{article.author}</ArticleAuthor>
+                                    <ArticleAuthor>{article.author ? article.author : "Невідомий"}</ArticleAuthor>
                                     <a href={article.url} target="_blank">
                                         Check Source
                                     </a>

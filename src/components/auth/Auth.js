@@ -20,7 +20,7 @@ export default class Auth extends Component {
             });
             localStorage.setItem("authenticated", "true");
         }
-        // this.props.history.push("/home");
+        this.homePageRedirect(webToken);
     };
 
     googleResponse = (response) => {
@@ -35,7 +35,13 @@ export default class Auth extends Component {
 
             localStorage.setItem("authenticated", "true");
         }
-        // this.props.history.push("/home");
+        this.homePageRedirect(webToken);
+    };
+
+    homePageRedirect = (webtoken) => {
+        if (webtoken) {
+            this.props.history.push("/home");
+        }
     };
 
     render() {

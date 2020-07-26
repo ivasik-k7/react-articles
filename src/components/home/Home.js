@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import {Redirect} from "react-router-dom";
 import styled from "styled-components";
-
-import "../../services/news.js";
+import "../../services/unsplash";
 
 import ArticleList from "../articleList/articleList";
+import ImagesList from "../imagesList/ImagesList";
 
 const Header = styled.header`
     padding: 8px 15px;
@@ -30,6 +30,14 @@ const LogoutButton = styled.button`
     color: white;
 `;
 
+const ImagesTitle = styled.h4`
+    font-size: 28px;
+    padding: 4px 8px;
+    color: rgba(188, 51, 16);
+    text-align: center;
+    font-weight: 700;
+`;
+
 export default class Home extends Component {
     logOut = () => {
         localStorage.clear("authenticated");
@@ -47,6 +55,8 @@ export default class Home extends Component {
                         <LogoutButton onClick={this.logOut}>Logout</LogoutButton>
                     </Header>
                     <ArticleList />
+                    <ImagesTitle>Recomended Photos :)</ImagesTitle>
+                    <ImagesList />
                 </div>
             );
         } else {
